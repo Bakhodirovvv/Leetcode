@@ -1,14 +1,12 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
-       List<Integer>list=new ArrayList<>();
-        int r=0;
-        for (int i = 0; i < nums.length; i++) {
-            list.add(nums[i]);
+        if(nums.length==0) return 0;
+        int i=0;
+        for(int num:nums){
+            if(i==0 || num>nums[i-1]){
+                nums[i++]=num;
+            }
         }
-        List<Integer> collect = list.stream().distinct().toList();
-        for (Integer integer : collect) {
-            nums[r++]=integer;
-        }
-        return collect.size();
+        return i;
     }
 }
